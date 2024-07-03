@@ -6,7 +6,8 @@
   "scripts": {
     "run:jest": "jest --config='./moduleTests/jest.config.js'",
     "run:api": "jest --config='./apiTests/jest.config.js'",
-    "run:playwright": "playwright test --config=./playwrightTests/playwright.config.ts"
+    "run:playwright": "rm -rf ./playwrightTests/reports/allure-report && rm -rf ./playwrightTests/reports/allure-results && playwright test --config=./playwrightTests/playwright.config.ts",
+    "run:allure": "allure generate ./playwrightTests/reports/allure-results --clean -o ./playwrightTests/reports/allure-report && allure open ./playwrightTests/reports/allure-report"
   },
   "author": "",
   "license": "ISC",
@@ -21,6 +22,8 @@
     "@playwright/test": "^1.45.0",
     "@types/jest": "^29.5.12",
     "@types/superagent": "^8.1.7",
+    "allure-commandline": "^2.29.0",
+    "allure-playwright": "^3.0.0-beta.5",
     "prettier": "^3.3.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.2"
