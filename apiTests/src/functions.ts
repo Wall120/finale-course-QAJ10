@@ -4,8 +4,8 @@ export async function getPosts(url: string): Promise<any> {
     try {
         const res = await superagent.get(url)
         return res;
-        }catch(errorMessage) {
-            console.log(errorMessage); 
+        }catch(error) {
+            return error; 
         };
     };
 
@@ -24,8 +24,8 @@ export async function createOperations(url: string, object: any): Promise<any> {
             .post(url)
             .send(object);
             return res;
-        }catch(errorMessage) {
-            console.log(errorMessage);
+        }catch(error) {
+            return error;
             };
         };
 
@@ -35,8 +35,8 @@ export async function changeOperations(url: string, object: any): Promise<any> {
             .put(url)
             .send(object);
             return res;
-        }catch(errorMessage) {
-            console.log(errorMessage);
+        }catch(error) {
+            return error;
             };
         };
 
@@ -46,8 +46,8 @@ export async function changePartOperations(url: string, object: any): Promise<an
             .patch(url)
             .send(object);
             return res;
-        }catch(errorMessage) {
-            console.log(errorMessage);
+        }catch(error) {
+            return error;
             };
         };
 

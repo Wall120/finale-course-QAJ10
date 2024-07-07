@@ -24,11 +24,8 @@ describe('GET api requests', () => {
     });
 
     test('get incorrect id post from listing', async ()=> {
-        await getPosts('https://jsonplaceholder.typicode.com/posts/101').catch((errorMessage) => {
-            expect(errorMessage.status).toBe(404);
-            expect(errorMessage.body).toHaveLength(0);
-        });
-
+        const err = await getPosts('https://jsonplaceholder.typicode.com/posts/101');
+        expect(err.status).toBe(404);
     });
 
     test('get posts comments', async () => {
@@ -70,10 +67,8 @@ describe('POST api requests', () => {
     });
 
     test('create comment with wrong path from post', async () => {
-        await createOperations('https://jsonplaceholder.typicode.com/comments/1', newComments).catch((errorMessage) => {
-        expect(errorMessage.status).toBe(404);
-        expect(errorMessage.body).toHaveLength(0);
-        });
+        const error = await createOperations('https://jsonplaceholder.typicode.com/comments/1', newComments);
+        expect(error.status).toBe(404);
     });
 
     test('create photo new photo', async () => {
@@ -94,10 +89,8 @@ describe('PUT api requests', () => {
     });
 
     test('change undefind id user', async () => {
-        await changeOperations('https://jsonplaceholder.typicode.com/users?id=12', changeUser).catch((errorMessage) => {
-        expect(errorMessage.status).toBe(404);
-        expect(errorMessage.body).toHaveLength(0);
-        });
+        const error = await changeOperations('https://jsonplaceholder.typicode.com/users?id=12', changeUser);
+        expect(error.status).toBe(404);
     });
 
     test('full change the created post', async () => {
@@ -136,10 +129,8 @@ describe('PATCH api requests', () => {
     });
 
     test('change part info post comment with wrong path', async () => {
-       await changePartOperations('https://jsonplaceholder.typicode.com/posts/1/comments?id=4', changeComment).catch((errorMessage) => {
-        expect(errorMessage.status).toBe(404);
-        expect(errorMessage.body).toHaveLength(0);
-       });
+        const error = await changePartOperations('https://jsonplaceholder.typicode.com/posts/1/comments?id=4', changeComment);
+        expect(error.status).toBe(404);
     });
 
     test('change part info in comment', async () => {
